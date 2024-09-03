@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 Days of JavaScript Challenge</title>
+    <style>
+        @keyframes fadeColor {
+            0% { opacity: 0;}
+            25% { opacity: 0.25;}
+            50% { opacity: 0.50;}
+            75% { opacity: 1;}
+            100% {opacity: 1;}
+
+        }
+
+        .fade-letter {
+            animation: fadeColor 3s infinite;
+        }
+
+        .container {
+            font-family: 'Arial, sans-serif'; /* Default font */
+            font-size: 200px; /* Change as needed */
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div id="sentence-container" class="container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',function (){
+            const sentence = "30    days of javascript challenge";
+        const container = document.getElementById('sentence-container');
+
+        //main output generating function that creates an array of words and then work on each
+        //letter of the word to provide it a different colour
+
+        function GenerateOutput(){ 
+            
+            // deleting old sentence 
+            container.textContent=null;
+            container.style.backgroundColor= getRandomColor();
+            container.classList.add('fade-letter')
+
+            // creating the sentence with changed animations and colour
+            sentence.split('').forEach(char => {
+               const span = document.createElement('span');
+               span.textContent = char;
+               span.classList.add('fade-letter');
+               span.style.color = getRandomColor();
+               container.appendChild(span);
+        });
+        }
+
+        // Function to generate a random color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Function to change the font family of the container
+        function changeFontFamily() {
+            const fonts = ['Arial, sans-serif', 'Courier New, Courier, monospace', 'Times New Roman, Times, serif', 'Georgia, serif', 'Verdana, sans-serif'];
+            container.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
+        }
+
+        // Change the font family every 5 seconds
+        setInterval(changeFontFamily, 3000);
+        setInterval(GenerateOutput,3000);
+        
+    
+        })
+    </script>
+</body>
+</html>

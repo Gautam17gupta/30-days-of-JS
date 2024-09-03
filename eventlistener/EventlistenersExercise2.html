@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Event Listener</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .main-box{
+      vertical-align: middle;
+        max-width: 500px;
+        max-height: 500px;
+        margin: 20px auto;
+        font-size:70px;
+        background-color: #fff;
+        border-block: 80px;
+        box-shadow: 0 0 10px rgba(102, 92, 92, 0.1);
+    }
+    #keyboard-code2{
+      padding-top: 40px;
+        text-align: center;
+        max-width: 200px;
+        height: 200px;
+        margin: 20px auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(67, 60, 60, 0.1);
+        font-size: 120px;
+        color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Keyboard Event Listener</h1>
+  <p>Press any key on your keyboard to see its key code.</p>
+  <div class="main-box">
+  <div id="keyboard-code"> press any key</div>
+  </div>
+  <div id="keyboard-code2" class="secondbox"></div>
+  <script>
+    // Function to display key code
+function displayKeyCode(event) {
+  const keyCodeDisplay = document.getElementById('keyboard-code');
+  const key =document.createElement('span')
+  key.textContent=event.key
+  key.style.color="green"
+  keyCodeDisplay.textContent= `you pressed `
+  keyCodeDisplay.appendChild(key)
+  const keyCodeDisplay2=document.getElementById('keyboard-code2');
+  keyCodeDisplay2.textContent = `${event.keyCode}`;
+  keyCodeDisplay2.style.color="green"
+  keyCodeDisplay2.style.fontSize='80'
+}
+
+// Event listener for keydown event
+document.addEventListener('keydown', displayKeyCode);
+
+  </script>
+</body>
+</html>

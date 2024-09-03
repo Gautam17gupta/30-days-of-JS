@@ -1,0 +1,268 @@
+<html>
+    <head>
+        <title>LeaderBoard</title>
+        <style>
+            #Heading{
+                text-align: center;
+                font-size: 40px;
+                padding-top: 40px;
+                letter-spacing: 2px;
+            }
+
+            .inputfield{
+                width: 200px;
+                height: 60px;
+                outline-color: red;
+                border: 1px solid rgb(233, 179, 179);
+            }
+
+            #input-bar{
+                text-align: center;
+            }
+
+            input::placeholder{
+                font-size: 25px;
+                text-align: center;
+                color: rgb(176, 174, 174);
+            }
+
+            input{
+                font-size: 25px;
+            }
+
+            button{
+                width: 250px;
+                height: 60px;
+                font-size: 25px;
+                background-color: rgb(233, 179, 179);
+                color: white;
+                border-color: rgb(233, 179, 179);
+                box-shadow: white;
+                border:none;
+            }
+
+            #input-error{
+                padding-top: 10px;
+                text-align: center;
+                font-weight: bold;
+                color: red;
+            }
+
+            .player-block{
+                height:100px;
+                width: 1070px;
+                background-color: rgb(233, 179, 179);
+                margin:auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
+                letter-spacing: 3px;
+                font-size: 20px;
+
+            }
+
+
+            .round-button {
+            width: 70px;
+            height: 70px;
+            background-color: rgb(249, 251, 247); /* Green background */
+            border: none; /* Remove borders */
+            border-radius: 50%; /* Make it round */
+            color: grey; /* White text */
+            text-align: center; /* Center the text */
+            text-decoration: none; /* Remove underline */
+            display: inline-block; /* Inline-block for spacing */
+            font-size: 16px; /* Increase font size */
+            cursor: pointer; /* Pointer cursor on hover */
+            margin-right: 10px;
+        }
+
+        .round-button:hover {
+            background-color: #e0ef95; /* Darker green on hover */
+        }
+
+        .inner-block{
+            width:265px;
+        }
+
+        .dateAndTime{
+            color: rgba(20, 19, 19, 0.624);
+            font-size: 15px;
+        }
+
+        </style>
+    </head>
+    <body id="body">
+        <p id="Heading"> 30 Days Of Javascript Challenge LeaderBoard</p>
+
+        <div id="input-bar">
+            <input id="FirstName" type="text" class="inputfield" placeholder="First Name">
+            <input id="LastName" type="text" class="inputfield" placeholder="Last Name">
+            <input id="Country" type="text" class="inputfield" placeholder="Country">
+            <input id="Score" type="number" class="inputfield" placeholder="Score">
+            <button class="button" onclick="CheckInput()">Add Player</button>
+        </div>
+
+        <div id="input-error"></div>
+        <!-- <div class="player-block">
+            <div id="name&date" class="inner-block">
+                <p>Asabeneh Yetayeh</p>
+                <p>date</p>
+            </div>
+            <div id="country" class="inner-block">Country</div>
+            <div id="Score" class="inner-block">Score</div>
+            <div id="buttons">
+                <button id="" class="round-button inline-block">del</button>
+                <button id="" class="round-button inline-block">+5</button>
+                <button id="" class="round-button inline-block">-5</button>
+            </div>
+        </div> -->
+    </body>
+
+    <script>
+
+        function CreatePlayerProfile(){
+            const playerblock=document.createElement('div')
+            playerblock.classList.add('player-block')
+
+            const nameAndDate=document.createElement('div')
+            nameAndDate.classList.add('inner-block')
+
+            const Name=document.createElement('p')
+            Name.textContent=`${getFirstName()} ${getLastName()}`;
+            const Date=document.createElement('p')
+            Date.classList.add('dateAndTime')
+            Date.textContent=getCurrentDateTime();
+
+            //adding name and date to name date div
+            nameAndDate.appendChild(Name)
+            nameAndDate.appendChild(Date)
+
+            // adding country
+            const country=document.createElement('div')
+            country.classList.add('inner-block')
+            country.textContent=getCountry();
+
+            //adding score 
+            const score=document.createElement('div')
+            score.classList.add('inner-block')
+            score.id='scoreid';
+            score.textContent=getScore()
+
+            //adding buttons
+            const buttons=document.createElement('div')
+            buttons.classList.add('inner-block')
+
+            //delete button
+            const deleteButton=document.createElement('button')
+            deleteButton.classList.add('round-button')
+            deleteButton.textContent='del';
+            deleteButton.addEventListener('click',()=>{
+                playerblock.remove()
+            })
+
+            //+5 button
+            const AddButton=document.createElement('button')
+            AddButton.classList.add('round-button')
+            AddButton.textContent='+5'
+            AddButton.addEventListener('click',()=>{
+                score.textContent=parseInt(score.textContent)+5;
+            })
+
+            //-5 button
+            const ReduceButton=document.createElement('button')
+            ReduceButton.classList.add('round-button')
+            ReduceButton.textContent='-5';
+            ReduceButton.addEventListener('click',()=>{
+                score.textContent=parseInt(score.textContent)-5;
+            })
+
+            // adding all buttons
+            buttons.appendChild(deleteButton)
+            buttons.appendChild(AddButton)
+            buttons.appendChild(ReduceButton)
+
+            // adding all name, country, score and buttons to the player-block
+            playerblock.appendChild(nameAndDate)
+            playerblock.appendChild(country)
+            playerblock.appendChild(score)
+            playerblock.appendChild(buttons)
+
+            //putting the entire player profile into the body
+
+            const body=document.getElementById('body')
+            body.appendChild(playerblock)
+        }
+
+
+         function getCurrentDateTime() {
+            const now = new Date();
+
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = months[now.getMonth()];
+
+            const day = now.getDate();
+            const year = now.getFullYear();
+
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            return `${month} ${day},${year} ${hours}:${minutes}`;
+        }
+
+        function getFirstName(){
+            let first=document.getElementById('FirstName').value
+            first=first.toUpperCase()
+            return first;
+        }
+
+        function getLastName(){
+            let last=document.getElementById('LastName').value
+            last=last.toUpperCase()
+            return last;
+        }
+
+        function getScore(){
+            let Score=document.getElementById('Score').value;
+            return parseInt(Score)
+        }
+
+        function getCountry(){
+            let country=document.getElementById('Country').value;
+            country= country.toUpperCase()
+            return country;
+        }
+
+        function CheckInput(){
+
+            let errormsg=document.getElementById('input-error');
+
+            let flag=true;
+            if(getFirstName().length===0){
+                console.log('lemgth works')
+                flag=false
+            }else if(getLastName().length===0){
+                flag=false
+            }else if(getCountry().length===0){
+                flag=false
+            }else if(isNaN(getScore())){
+                flag=false
+            }
+            console.log('function called')
+            if(flag==true){
+                console.log("all entries are present ")
+                errormsg.textContent=""
+                CreatePlayerProfile();
+            }else{
+                let errormsg=document.getElementById('input-error');
+                errormsg.textContent='All Fields Are Required';
+            }
+        }
+
+        console.log(typeof(getCountry()))
+
+      
+
+    </script>
+</html>

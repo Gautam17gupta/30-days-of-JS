@@ -1,0 +1,228 @@
+<html>
+    <head>
+        <title>PORTFOLIO</title>
+        <style>
+
+            #main-block{
+                width: 70%;
+                margin: auto;
+                align-content: center;
+            }
+
+
+            #name{
+                letter-spacing: 15px;
+                font-size: 50px;
+                height: 110px;
+                margin-top: 60px;
+            }
+
+            #role{
+                height:100px;
+                background-color: rgb(238, 213, 211);
+                font-size: 40px;
+                align-items: center;
+            }
+
+
+            .TextAnimation {
+            position: relative;
+            animation: moveRight 3s ease forwards;
+        }
+
+        @keyframes moveRight {
+            from {
+                left: 0;
+            }
+            to {
+                left: 100px;
+            }
+        }
+
+            #text{
+                margin-top: 10px;
+                line-height: 1.8;
+            }
+
+            .block{
+                height:150px;
+                width: 230px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1vw;
+                margin-inline: 50px;
+                background-color: rgb(249, 249, 242);
+            }
+
+            .block:hover{
+                height: 160px;
+                width: 240px;
+                font-size: 1.5vw;
+                justify-content: center;
+                background-color:bisque;
+            }
+
+            #blocks{ 
+                height: 180px;
+                margin-top: 20px;
+                display:inline-flex;
+            }
+
+            .imagedimensions{
+                height:50px;
+                width:70px;
+            }
+
+            .technology{
+                font-size: 50px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="main-block">
+            <div id="name"> Asabeneh Yetayeh</div>
+            <div id="role"></div>
+            <div id="text">I am Asabeneh Yetayeh. I am an instructer, developer, motivator and content creator
+                i love educating people and creating educational materials. In january 2019, I also created
+                a teaching material <b>JavaScript For Everyone</b> . In December 2019, I created <b>30Days Of Python</b>
+                challenge and in January 2020 <b>30Days Of JavaScript </b> challenge.
+            </div>
+            <div id = "blocks">
+                <div id="block-one" class="block"><p>JAVASCRIPT FOR EVERYONE</p></div>
+                <div id="block-two" class="block"><p>30DAYS OF PYTHON</p></div>
+                <div id="block-three" class="block"><p>30DAYS OF JAVASCRIPT</p></div>
+
+            </div>
+
+            <div style="margin-top: 50px;" >The technologies I teach  <span id="technologies" style="color: yellow; font-size: 50px;"> Javascript</span></div>
+        </div>
+    </body>
+
+    <script>
+
+        const role=document.getElementById('role');
+        // creating roles attributes
+
+        //programmer role
+        const Programmer=document.createElement('div')
+        const ProgrammerEmoji=document.createElement('img')
+        ProgrammerEmoji.src="computer.png";
+        ProgrammerEmoji.classList.add('imagedimensions');
+        Programmer.appendChild(ProgrammerEmoji)
+        const programmertext=document.createElement('span');
+        programmertext.textContent='Programmer';
+        programmertext.classList.add('TextAnimation')
+        Programmer.appendChild(programmertext);
+        role.appendChild(Programmer)
+        
+
+        // motivator role
+        const Motivator=document.createElement('div')
+        const motivatoremoji=document.createElement('img')
+        motivatoremoji.src="motivater.png";
+        motivatoremoji.classList.add('imagedimensions');
+        Motivator.appendChild(motivatoremoji)
+        const motivatortext=document.createElement('span');
+        motivatortext.textContent='Motivator';
+        motivatortext.classList.add('TextAnimation')
+        Motivator.appendChild(motivatortext)
+
+
+        // Instructor role
+        const Instructor=document.createElement('div')
+        const instructoremoji=document.createElement('img')
+        instructoremoji.src="instructer.png";
+        instructoremoji.classList.add('imagedimensions');
+        Instructor.appendChild(instructoremoji)
+        const instructortext=document.createElement('span');
+        instructortext.textContent='Instructor';
+        instructortext.classList.add('TextAnimation')
+        Instructor.appendChild(instructortext)
+
+
+        // Motivator role 
+        const MotivationalSpeaker=document.createElement('div')
+        const MotivationalSpeakerEmoji=document.createElement('img')
+        MotivationalSpeakerEmoji.src="motivater.png";
+        MotivationalSpeakerEmoji.classList.add('imagedimensions');
+        MotivationalSpeaker.appendChild(MotivationalSpeakerEmoji)
+        const MotivationalSpeakerText=document.createElement('span');
+        MotivationalSpeakerText.textContent='Motivator';
+        MotivationalSpeakerText.classList.add('TextAnimation')
+        MotivationalSpeaker.appendChild(MotivationalSpeakerText)
+
+
+        // Content Creator
+        const ContentCreator=document.createElement('div');
+        const ContentCreatorEmoji=document.createElement('img')
+        ContentCreatorEmoji.src="contentCreator.png";
+        ContentCreatorEmoji.classList.add('imagedimensions');
+        ContentCreator.appendChild(ContentCreatorEmoji)
+        const ContentCreatorText=document.createElement('span');
+        ContentCreatorText.textContent='Content Creator';
+        ContentCreatorText.classList.add('TextAnimation')
+        ContentCreator.appendChild(ContentCreatorText);
+
+
+        let roleArray=[Motivator,ContentCreator,MotivationalSpeaker,Instructor,Programmer]
+        
+        let i=0;
+        function ChangeRoles(){
+            setInterval(()=> {
+                if(i==4){
+                    i=0;
+                }
+                let temprole=roleArray[i];
+                i++;
+                role.textContent=null;
+                role.appendChild(temprole)
+            },3000);
+        }
+
+
+
+        const technology=document.getElementById('technologies')
+
+        // creating technologies
+        const javascript=document.createElement('span')
+        javascript.textContent="Javascript"
+        javascript.style.color='yellow'
+
+        const redux=document.createElement('span')
+        redux.textContent='Redux'
+        redux.style.color='purple'
+
+        const node=document.createElement('span')
+        node.style.color='green'
+        node.textContent='Node'
+
+        const python=document.createElement('span')
+        python.style.color='violet'
+        python.textContent='violet'
+
+        const react=document.createElement('span')
+        react.style.color='skyblue'
+        react.textContent="React"
+
+        let j=0;
+        techarray=[react,redux,node,python,javascript]
+        function changeTech(){
+            setInterval(()=>{
+                if(j==4){
+                    j=0;
+                }
+                let temp=techarray[j];
+                temp.classList.add('technology')
+                j++;
+                technology.textContent=null;
+                technology.appendChild(temp)
+            },2000);
+        }
+
+        ChangeRoles()
+        changeTech()
+    </script>
+
+</html>

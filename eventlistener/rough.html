@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Input Button Example</title>
+</head>
+<body>
+  <label for="quantity">Enter quantity:</label>
+  <input type="number" id="quantity" name="quantity" min="1" max="100" value="1">
+  
+  <button type="button" onclick="submitQuantity()">Submit</button>
+
+  <script>
+    function submitQuantity() {
+      const quantity = document.getElementById('quantity').value;
+
+      alert(`Quantity selected: ${quantity}`);
+      // Perform further actions with the selected quantity
+    }
+  </script>
+</body>
+</html>

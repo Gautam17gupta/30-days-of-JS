@@ -1,0 +1,68 @@
+
+<html>
+    <head>
+        <title>
+            "Learning DOM manipulation"
+        </title>
+    </head>
+    <body>
+        <p id="para1">"this is a sample paragraph 1 for DOM of the 30 days course of learning javascript by Asabeneh Yetayeh"</p>
+        <p id="para2">"this is a sample paragraph 2 for DOM of the 30 days course of learning javascript by Asabeneh Yetayeh"</p>
+        <p id="para3">"this is a sample paragraph 3 for DOM of the 30 days course of learning javascript by Asabeneh Yetayeh"</p>
+        <p id="para4">"this is a sample paragraph 4 for DOM of the 30 days course of learning javascript by Asabeneh Yetayeh"</p>
+
+    </body>
+    <script>
+    // EXERCISE LEVEL 1
+    // Q.1 Create an index.html file and put four p elements as above: Get the first paragraph by using document.querySelector(tagname) and tag name
+        let paraone=document.querySelector('p')
+        console.log(paraone)
+        paraone=document.getElementsByTagName('p')
+        console.log(paraone[0])
+    // Q.2 Get each of the the paragraph using document.querySelector('#id') and by their id
+        console.log('second answer starts here')
+        let para1=document.querySelector('#para1')
+        console.log(para1)
+        let para2=document.querySelector('#para2')
+        console.log(para2)
+        let para3=document.querySelector('#para3')
+        console.log(para3)
+        let para4=document.querySelector('#para4')
+        console.log(para4)
+
+    // Q.3 Get all the p as nodeList using document.querySelectorAll(tagname) and by their tag name
+        let nodelist=document.querySelectorAll('p')
+        console.log(nodelist)
+    // Q.4 Loop through the nodeList and get the text content of each paragraph
+        nodelist.forEach((paragraph)=> console.log(paragraph.textContent))
+    // Q.5 Set a text content to paragraph the fourth paragraph,Fourth Paragraph
+        nodelist[3].textContent='FORTH PARAGRAPH'
+    // Q.6 Set id and class attribute for all the paragraphs using different attribute setting methods
+        nodelist[0].setAttribute('id','paragraph1')    
+        nodelist[1].setAttribute('id','paragraph2')
+        nodelist[2].setAttribute('id','paragraph3')
+        nodelist[3].setAttribute('id','paragraph4')
+    // Exercise level 2
+    // Q.1 Change stye of each paragraph using JavaScript(eg. color, background, border, font-size, font-family)
+        nodelist.forEach((paragraph)=> {
+            paragraph.style.color='purple'
+            paragraph.style.backgroundColor='light-purple'
+            paragraph.style.fontSize='35px'
+            paragraph.style.border='10px'
+            paragraph.style.fontFamily='times new roman'
+        })
+
+    // Q.2 Select all paragraphs and loop through each elements and give the first and third paragraph a color of green, and the second and the fourth paragraph a red color
+    nodelist.forEach((paragraph,i)=>{
+        if(i%2==0){
+            paragraph.style.color='green'
+        }else{
+            paragraph.style.color='red'
+        }        
+    })    
+    // Q.3 Set text content, id and class to each paragraph
+    // already did 
+    // EXERCISE LEVEL 3
+    
+    </script>
+</html>

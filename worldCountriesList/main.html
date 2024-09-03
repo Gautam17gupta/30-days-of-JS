@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>world countries list</title>
+        <style>
+
+            #fixed-Heading{
+                height :70%;
+                background-image:url(globe-2.jpg);
+                ;
+                background-size: 100% 150%;
+                background-repeat: no-repeat;
+                text-align: center;
+                align-content: center;
+                color: aliceblue;
+                font-size: 20px;
+            }
+
+            .button{
+                color: aliceblue;
+                background-color:rgb(122, 45, 177);
+                text-transform:uppercase;
+                height: 30px;
+                border: 0px;
+            }
+
+
+            .output-block{
+                width: 150px;
+                height: 200px;
+                background-image: url(map_image.jpg);
+                background-size: 150% 100%;
+                border:10px;
+                border-color: black;
+                border-width: 50px;
+                margin-inline: 25px;
+                margin-block: 15px;
+                display:inline-block;
+                text-align: center;
+                color: rgb(0, 7, 14);
+                align-content: center;
+
+            }
+
+            #input{
+                border-radius: 30px;
+                width: 300px;
+                margin-top: 20px;
+                
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div id="fixed-Heading">
+            <H1 style="font-stretch: wider;"> WORLD COUNTRIES LIST</H1>
+            <p>Total Number of countries :193</p>
+            <p id="additional-info"> <span id="inputword"></span><span id="number"></span></p>
+            <div id="buttons">
+                <button id="starting-world" class="button" onclick="startingWord()">starting word</button>
+                <button id="search-with-anyword" class="button" onclick="searchWithWord()">search with any world</button>
+                <button id="aToz" class="button" onclick="defaultDisplay()">a-z</button>
+                
+            </div>
+            
+            <div id="input-block">
+                <input id ="input"type="text" placeholder="search countries ...">
+            </div>
+        </div>
+
+        <div id="output" style="background-color:beige"></div>
+    </body>
+    <script src="countries.js"></script>
+</html>

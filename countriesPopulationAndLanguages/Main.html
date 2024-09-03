@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TOP 10 Population and Languages</title>
+        <style>
+            body{
+                font-family:Arial, Helvetica, sans-serif;
+                color: #101110c4;
+                justify-content: center;
+                text-align: center;
+            }
+
+            #Buttons{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                height: 100px;
+                align-items: center;
+                color: #f79617;
+                border-color:rgb(115, 121, 125);
+                border-width: 3px;
+                margin-bottom: -30px;
+
+            }
+
+            .Button{
+                background-color: #f79617;
+                height:50px ;
+                border: none;
+                margin: 8px 4px;
+                padding: 12px 30px;
+
+            }
+
+            .content{
+                height: 40px;
+                display: flex;
+                align-self: center;
+                
+            }
+
+            .name{
+                position:absolute;
+               left: 15%;
+            }
+
+            .progressbar{
+               position:absolute;
+               left: 30%;
+               width: 500px;
+               height: 30px;
+               background-color: #f79617;
+               overflow:hidden;
+            }
+
+            progress::-webkit-progress-bar {
+               background-color: white;
+            }
+
+            progress::-webkit-progress-value{
+                background-color: #f79617;
+            }
+
+            .number{
+                position:absolute;
+               left: 70%;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="heading">
+            <p style="color: #f79617; text-align: center; font-size: 50px; margin-bottom: -20px;" >World Countries Data</p>
+            <p style="text-align: center; font-size: 20px; " > currently we have 250 countries </p>
+        </div>
+
+        <div id="Buttons">
+            <button id="PopulationButton" class="Button" onclick="DisplayPopulation()">POPULATION</button>
+            <button id="LanguagesButton" class="Button" onclick="DisplayLanguages()">LANGUAGES</button>
+        </div>
+
+        <p id = "ContentHeading" style="text-align: center;"></p>
+
+        <div id="contentContainer"></div>
+    </body>
+
+    <script src="countries_data.js">
+      
+    </script>
+</html>

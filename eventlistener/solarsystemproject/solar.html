@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Weight on Different Planets</title>
+
+<!-- adding styles -->
+
+    <style>
+        body {
+    background:url(galaxy.gif);
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.input-group {
+    margin: 20px 0;
+}
+
+input, select, button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.planet-image img {
+    width: 300px;
+    height: auto;
+}
+
+#resultblock{
+    background-color: rgb(111, 121, 130,0.5);
+    height: 400px;
+    width: 800px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+
+}
+
+#result{
+    background-color: rgb(111, 121, 130,0.5);
+    margin: auto;
+    display: flex;
+    width: 350px;
+    height: 180px;
+    padding-top: 40px;
+    text-align: center;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#weight{
+    display: flex;
+    background-color: rgb(111, 121, 130,0.5);
+    
+    text-decoration: solid;
+    border-radius: 50%;
+    width:150px;
+    height: 150px;
+    overflow: hidden;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculate a weight of an object on a planet</h1>
+        <div class="input-group">
+            <input type id="mass" placeholder="Mass in Kilogram">
+            <select id="planet">
+                <option value="">--select planet--</option>
+                <option value="3.61">Mercury</option>
+                <option value="8.83">Venus</option>
+                <option value="9.8">Earth</option>
+                <option value="3.75">Mars</option>
+                <option value="26.0">Jupiter</option>
+                <option value="11.2">Saturn</option>
+                <option value="10.5">Uranus</option>
+                <option value="13.3">Neptune</option>
+            </select>
+            <button onclick="calculateWeight()">Calculate weight</button>
+        </div>
+        <div id="resultblock">
+            <div class="planet-image">
+            <img   id="planet-image">
+            </div>
+            <div id="result">Please enter the mass in number 
+                <div id="weight"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function calculateWeight() {
+
+    let mass = document.getElementById('mass').value;
+    
+    // checking if the input is a number or a number name
+    let tempMass=parseFloat(mass)
+    console.log(tempMass,'this is the temporary mass')
+    if(isNaN(tempMass)){
+        console.log('if block')
+        mass=convertNumberNameToInteger(mass)
+        console.log('if block')
+    }else{
+        mass=tempMass
+        console.log('else block')
+    }
+    const planet = document.getElementById('planet').value;
+    const resultDiv = document.getElementById('result');
+    const planetImage = document.getElementById('planet-image');
+    
+    if (mass && planet) {
+        const weight = (mass * planet).toFixed(3);
+        console.log(weight)
+        weighttag=document.getElementById('weight')
+        weighttag.textContent=weight+'N';
+        
+        switch (planet) {
+            case "3.61":
+                planetImage.src = 'Mercury.png';
+                resultDiv.textContent = `The weight of the object on MERCURY`;
+                break;
+            case "8.83":
+                planetImage.src = 'Venus.png';
+                resultDiv.textContent = `The weight of the object on VENUS`;
+                break;
+            case "9.8":
+                planetImage.src = 'Earth.png';
+                resultDiv.textContent = `The weight of the object on EARTH`;
+                break;
+            case "3.75":
+                planetImage.src = 'Mars.png';
+                resultDiv.textContent = `The weight of the object on MARS `;
+                break;
+            case "26.0":
+                planetImage.src = 'Jupiter.png';
+                resultDiv.textContent = `The weight of the object on JUPITOR `;
+                break;
+            case "11.2":
+                planetImage.src = 'Saturn.png';
+                resultDiv.textContent = `The weight of the object on SATURN `;
+                break;
+            case "10.5":
+                planetImage.src = 'Uranus.png';
+                resultDiv.textContent = `The weight of the object on URANUS`;
+                break;
+            case "13.3":
+                planetImage.src = 'neptune.png';
+                resultDiv.textContent = `The weight of the object on NEPTUNE`;
+                break;
+        }
+        resultDiv.appendChild(weighttag)
+    } else {
+        resultDiv.textContent = 'Please enter a mass and select a planet.';
+    }
+}
+
+
+// code if entered number is in number numbers 
+
+const smallNumbers = {
+    "zero": 0,
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "eleven": 11,
+    "twelve": 12,
+    "thirteen": 13,
+    "fourteen": 14,
+    "fifteen": 15,
+    "sixteen": 16,
+    "seventeen": 17,
+    "eighteen": 18,
+    "nineteen": 19,
+};
+
+const tens = {
+    "twenty": 20,
+    "thirty": 30,
+    "forty": 40,
+    "fifty": 50,
+    "sixty": 60,
+    "seventy": 70,
+    "eighty": 80,
+    "ninety": 90,
+};
+
+const scales = {
+    "hundred": 100,
+    "thousand": 1000,
+    // Add more scales as needed
+};
+
+function convertNumberNameToInteger(name) {
+    const parts = name.toLowerCase().split(/[\s-]+/);
+    let total = 0;
+    let current = 0;
+
+    parts.forEach(part => {
+        if (smallNumbers[part] !== undefined) {
+            current += smallNumbers[part];
+        } else if (tens[part] !== undefined) {
+            current += tens[part];
+        } else if (scales[part] !== undefined) {
+            current *= scales[part];
+            if (scales[part] > 100) {
+                total += current;
+                current = 0;
+            }
+        } else {
+            current = NaN; // Handle invalid input
+        }
+    });
+
+    return total + current;
+}
+
+</script>
+</html>

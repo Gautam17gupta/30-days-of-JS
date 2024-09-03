@@ -1,0 +1,237 @@
+<html>
+    <head>
+        <title>Form Validation</title>
+       <style>
+
+        #container{
+            width: 60%;
+            margin: auto;
+            align-content: center;
+        }
+
+        #heading{
+            font-size: 60px;
+            height:100px; 
+            text-align: center;         
+        }
+
+        p{
+            font-size: 40px;
+           
+        }
+
+        .input{
+            width:800px;
+            height:50px;
+            margin-top: -30px;
+            outline-color: red;
+            font-size: 30px;
+            border: 1px solid black;
+        }
+
+        
+
+        .warning{
+            font-size: 20px;
+            color: orange;
+            width:600px;
+            margin-left: 100px;
+        }
+
+        .button{
+            width: 200px;
+            height: 50px;
+            font-size: 30px;
+            color: white;
+            background-color:rgb(29, 26, 26);
+            border: 1px solid rgb(29, 26, 26);
+        }
+
+        .passed{
+            border: 3px solid green;
+        }
+
+        .buttonpassed{
+            background-color: rgb(84, 236, 84);
+            border:1px solid rgb(84, 236, 84)
+        }
+
+       </style>
+    </head>
+    <body>
+        <div id='container'>
+
+            <div id="heading">Validating Web Forms</div>
+
+            <div id="first-name">
+                <p>FIRST NAME</p>
+                <input id="firstname" class="input">
+                <p class="warning" id="firstnamewarning"><b>First name must be alpha numeric and contain 3 - 16 characters</b></p>
+            </div>
+
+            <div id="last-name">
+                <p>Last Name</p>
+                <input id="lastname" class="input">
+                <p class="warning" id="lastnamewarning"><b>First name must be alpha numeric and contain 3 - 16 characters</b></p>
+            </div>
+
+            <div id="e-mail">
+                <p><E->Mail</E-></p>
+                <input id="email" class="input" type="email">
+                <p class="warning" id="emailwarning"><b>Email must be a valid address,  e.g. example@example.com</b></p>
+            </div>
+
+            <div id="pass-word">
+                <p>Password</p>
+                <input id="password" class="input" type="password">
+                <p class="warning" id="passwordwarning"><b>password must be alphanumeric (@,_ and - are also allowed) and between 6-20 characters</b></p>
+
+            </div>
+
+            <div id="phone-number">
+                <p>Telephone</p>
+                <input id="phonenumber" class="input">
+                <p class="warning" id="phonenumberwarning"><b>A valid Telephone number (11 digits and 333-333-3334)</b></p>
+            </div>
+
+            <div id="your-bio">
+                <p>Your Bio</p>
+                <input id="yourbio" class="input" >
+                <p class="warning" id="biowarning"><b>bio must contain only lowercase letters, underscores, hyphens and be 8-50 characters</b></p>
+            </div>
+            <button id ="button" class="button" onclick="checkAllInputs()">Submit</button>
+        </div>
+    </body>
+
+    <script>
+        function checkAllInputs(){
+            // checking first name 
+            const button=document.getElementById('button')
+            flag=true;
+        //    checkFirstName()
+        //    checkLastName()
+        //    checkemail()
+        //    checkpassword()
+        //    checkphonenumber()
+        //    checkbio()
+           if(!checkFirstName()){flag=false}
+           if(!checkLastName()){flag=false}
+           if(!checkemail()){flag=false}
+           if(!checkpassword()){flag=false}
+           if(!checkphonenumber()){flag=false}
+           if(!checkbio()){flag=false}
+           console.log(flag)
+
+           if(flag){
+            button.classList.add('buttonpassed')
+           }else{
+            console.log('falseblock')
+            button.classList.add('button')
+           }
+        }
+        
+        function checkFirstName(){
+            const firstname=document.getElementById('firstname');
+            const name=firstname.value;
+            const regex = /^[a-zA-Z]{3,16}$/;
+            if(regex.test(name)){
+                const firstnamewarning=document.getElementById('firstnamewarning')
+                firstnamewarning.textContent=null;
+                firstname.classList.add('passed')
+                console.log('passed')
+            }else{
+                const firstnamewarning=document.getElementById('firstnamewarning')
+                firstnamewarning.textContent='First name must be alpha numeric and contain 3 - 16 characters';
+                firstname.classList.add('input')
+            }
+            return regex.test(name);
+        }
+
+        function checkLastName(){
+            const lastname=document.getElementById('lastname')
+            const name=lastname.value;
+            const regex = /^[a-zA-Z]{3,16}$/;
+            if(regex.test(name)){
+                const lastnamewarning=document.getElementById('lastnamewarning')
+                lastnamewarning.textContent=null
+                lastname.classList.add('passed')
+            }else{
+                const lastnamewarning=document.getElementById('lastnamewarning')
+                lastnamewarning.textContent='First name must be alpha numeric and contain 3 - 16 characters';
+                lastname.classList.add('input')
+            }
+            return (regex.test(name))
+
+        }
+
+        function checkemail(){
+            const email=document.getElementById('email')
+            const mail=email.value;
+            const regex= /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if(regex.test(mail)){
+                const emailwarning=document.getElementById('emailwarning')
+                emailwarning.textContent=null
+                email.classList.add('passed')
+                console.log('email passed')
+            }else{
+                const emailwarning=document.getElementById('emailwarning')
+                emailwarning.textContent='Email must be a valid address,  e.g. example@example.com'
+                email.classList.add('input')
+            }
+            return regex.test(mail)
+        }
+
+        function checkpassword(){
+            const password=document.getElementById('password')
+            const word=password.value;
+            const regex=/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9@_-]{6,20}$/;
+            if(regex.test(word)){
+                const passwordwarning=document.getElementById('passwordwarning')
+                passwordwarning.textContent=null
+                password.classList.add('passed')
+                console.log('password passed')
+            }else{
+                const passwordwarning=document.getElementById('passwordwarning')
+                passwordwarning.textContent='password must be alphanumeric (@,_ and - are also allowed) and between 6-20 characters';
+                password.classList.add('input')
+            }
+            return regex.test(word)
+        }
+
+        function checkphonenumber(){
+            const phonenumber=document.getElementById('phonenumber')
+            const number=phonenumber.value;
+            const regex=/^(?:\+1[-.\s]?)?(?:\(?(\d{3})\)?[-.\s]?)(\d{3})[-.\s]?(\d{4})$/;
+            if(regex.test(number)){
+                const phonenumberwarning=document.getElementById('phonenumberwarning')
+                phonenumberwarning.textContent=null;
+                phonenumber.classList.add('passed')
+                console.log('phone number passed')
+            }else{
+                const phonenumberwarning=document.getElementById('phonenumberwarning')
+                phonenumberwarning.textContent='A valid Telephone number (11 digits and 333-333-3334)';
+                phonenumber.classList.add('input')
+            }
+            return regex.test(number)
+        }
+
+        function checkbio(){
+            const bio=document.getElementById('yourbio')
+            const text=bio.value;
+            const regex=/^[a-z _-]{8,50}$/;
+            if(regex.test(text)){
+                const biowarning=document.getElementById('biowarning')
+                biowarning.textContent=null;
+                bio.classList.add('passed')
+                console.log('bio passed')
+            }else{
+                const biowarning=document.getElementById('biowarning')
+                biowarning.textContent='bio must contain only lowercase letters, underscores, hyphens and be 8-50 characters';
+                bio.style.border=black;
+            }
+            return regex.test(text);
+        }
+
+        
+    </script>
+</html>

@@ -1,0 +1,140 @@
+<html>
+    <head>
+        <title>COUNTRIES PROJECT</title>
+
+        <style>
+
+            #heading{
+                height:fit-content;
+                text-align: center;
+                background-color: rgb(241, 238, 238);
+            }
+
+            #inputAndButtons{
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            #inputbar{
+                border-radius: 30px;
+                width: 700px;
+                height: 50px;
+                outline-color: rgb(241, 238, 238);
+                border: 2px solid rgb(241, 238, 238);
+                color: orange;
+                text-transform: uppercase;
+                font-size: 15px;
+            }
+
+            .button{
+                width: 200px;
+                height: 40px;
+                background-color: orange;
+                font-size: 15px;
+                border:1px solid orange;
+                border-radius:30px;
+                margin-inline: 20px;
+            }
+
+            .countryblock{
+                width: 150px;
+                height:250px;
+                text-align: center;
+                margin-inline: 10px;
+                
+            }
+
+            .flag-image{
+                height: 70px;
+                width: 130px;
+                display:flex;
+                align-items: flex-start;
+            }
+
+            .name{
+                color: orange;
+                text-transform: uppercase;
+                height: 30px;
+
+                
+            }
+
+            .additional-info{
+                height: 150px;
+                text-align:justify;
+                margin-left: 3px;
+                color:grey ;
+                
+            }
+
+            #countries-container{
+                display:ruby;
+                background-color: rgb(137, 129, 129);
+            }
+
+            .content{
+                height: 40px;
+                display: flex;
+                align-self: center;
+                
+            }
+
+            .country-name{
+                position:absolute;
+               left: 15%;
+            }
+
+            .progressbar{
+               position:absolute;
+               left: 30%;
+               width: 500px;
+               height: 30px;
+               background-color: #f79617;
+               overflow:hidden;
+            }
+
+            progress::-webkit-progress-bar {
+               background-color: white;
+            }
+
+            progress::-webkit-progress-value{
+                background-color: #f79617;
+            }
+
+            .number{
+                position:absolute;
+               left: 70%;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div id ='heading'>
+
+            <p style="color: orange; font-size: 50px; ">World Countries Data</p>
+            <p style="margin-top: -40px;">Currently we have 250 countries</p>
+            <p id="count" style="color:orange;"><i> </i></p>
+
+        </div>
+
+        <div id="inputAndButtons">
+            <input id="inputbar" type="text" placeholder="Search countries, capitals, and  populations">
+            <br>
+            <div style="margin-top: 30px;">
+            <button class="button" onclick="sortbyname()"> NAME </button>
+            <button class="button">CAPITAL</button>
+            <button class="button" onclick="window.location.href='#population-container'">POPULATION</button>
+            </div>
+        </div>
+        <div> </div>
+        <div id="countries-container">
+
+        </div>
+        <div id="population-container">
+
+        </div>
+        <script src="countries_data.js"></script>
+
+    </body>
+</html>

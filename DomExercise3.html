@@ -1,0 +1,127 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript for Everyone:DOM</title>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0fd;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  align-content: center;  
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f0f0f0fd;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+h3 {
+    text-align: center;
+   
+ 
+}
+
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+        <h1 style="text-align: center;">Asabeneh Yetayeh challenges in <span style="font-size: 80px;">2020</span></h1>
+        <h2><u>30DaysOfJavaScript Challenge</u></h2>
+        <h3 id="datetime">date and time </h3>
+        <ul id ='challenge-list'>
+            <li>30DaysOfPython Challenge Done</li>
+            <li>30DaysOfJavaScript Challenge Ongoing</li>
+            <li>30DaysOfReact Challenge Coming</li>
+            <li>30DaysOfFullStack Challenge Coming</li>
+            <li>30DaysOfDataAnalysis Challenge Coming</li>
+            <li>30DaysOfReactNative Challenge Coming</li>
+            <li>30DaysOfMachineLearning Challenge Coming</li>
+        </ul>
+    </div>
+  </body>
+  <script>
+    // Function to change year color every 1 second
+function changeYearColor() {
+  const years = document.getElementsByTagName('span')[0];
+  setInterval(() => {
+    const randomColor = getRandomColor();
+    years.style.color = randomColor;
+  }, 1000);
+}
+
+// Function to change date and time background color every 1 second
+function changeDateTimeBackground() {
+function updatedtime(){
+    const now=new Date();
+    const currentdatetime=now.toLocaleString()
+    document.querySelector('#datetime').textContent=currentdatetime;
+    setInterval(() => {
+    const randomColor = getRandomColor();
+    document.querySelector('#datetime').style.backgroundColor = randomColor;
+  }, 1000);
+}setInterval(updatedtime,1000)
+}
+
+//Setting background color based on challenge status
+function setChallengeStatusColor() {
+  const challengeList = document.getElementById('challenge-list').getElementsByTagName('li');
+  
+  for (let i = 0; i < challengeList.length; i++) {
+    const challenge = challengeList[i];
+    const challengeText = challenge.textContent;
+    
+    if (challengeText.includes('Done')) {
+      challenge.style.backgroundColor = 'green';
+    } else if (challengeText.includes('Ongoing')) {
+      challenge.style.backgroundColor = 'Yellow';
+    } else if (challengeText.includes('Coming')) {
+      challenge.style.backgroundColor = 'red';
+    }
+  }
+}
+
+// Helper function to generate random color
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+// Invoke functions to start the changes
+changeYearColor();
+changeDateTimeBackground();
+setChallengeStatusColor();
+
+  </script>
+</html>

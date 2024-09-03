@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Web Page</title>
+  <style>
+    .number-block {
+    
+      align-items: center;
+      display:inline-table;
+      width: 200px;
+      height: 100px;
+      border-spacing: 10px;
+      text-align: center;
+      font-size: 15px;
+      background-color: white;
+      margin: 10px;
+    box-shadow:0 0 10px rgb(23, 23, 95);
+  }
+
+  </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;">WORLD COUNTRIES LIST</h1>
+    <div id ="countries-container" style="text-align: center;"></div>
+  </body>
+  <script>
+    const countriesAPI = 'https://restcountries.com/v2/all'
+    const countriesarray=[]
+    const fetchdata = async() => {
+    try{
+        const response = await fetch(countriesAPI)
+        const countries= await response.json()
+        countries.forEach(element => {
+          const div =document.createElement('div')
+          let name =(element.name).toString()
+          if(name!=null){div.classList.add('number-block')
+           div.textContent=name
+           countrycontainer.appendChild(div)}
+        });
+        }catch(err){
+            console.error(err)
+        }
+}
+  fetchdata()
+  const countrycontainer=document.getElementById('countries-container')
+  </script>
+  </html>
